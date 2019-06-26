@@ -68,7 +68,10 @@ Download message history from slack`,
   })
   .coerce('filepath', (arg) => {
     if (arg !== 'stdout')
-      return fs.createWriteStream(String(arg))
+       var day = new Date();
+  var today = day.toLocaleDateString();
+var filename = String(arg)+today+'.json';
+      return fs.createWriteStream(filename)
 
     // No output file given, log to file to not disturb stdout/stderr
     log.stream = fs.createWriteStream('slack-history-export.log')
