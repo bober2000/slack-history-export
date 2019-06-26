@@ -68,9 +68,9 @@ Download message history from slack`,
   })
   .coerce('filepath', (arg) => {
     if (arg !== 'stdout')
-       var day = new Date();
-  var today = day.toLocaleDateString();
-var filename = String(arg)+today+'.json';
+       var day = new Date()
+  var today = day.toLocaleDateString()
+var filename = String(arg)+today+'.json'
       return fs.createWriteStream(filename)
 
     // No output file given, log to file to not disturb stdout/stderr
