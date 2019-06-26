@@ -51,7 +51,7 @@ export default class SlackHistoryExport {
         message.timestamp = +(message.ts * 1e3).toString().split('.')[0]
         message.isoDate = new Date(message.timestamp)
         /* eslint-enable no-param-reassign */
-        outputStream.write(JSON.stringify(message, null, 2))
+        outputStream.write(JSON.stringify(message, ['isoDate','user','text'], 2))
 
         if (groupHistory.has_more || index !== groupHistory.messages.length - 1)
           outputStream.write(',')
@@ -79,7 +79,7 @@ export default class SlackHistoryExport {
         message.timestamp = +(message.ts * 1e3).toString().split('.')[0]
         message.isoDate = new Date(message.timestamp)
         /* eslint-enable no-param-reassign */
-        outputStream.write(JSON.stringify(message, null, 2))
+        outputStream.write(JSON.stringify(message, ['isoDate','user','text'], 2))
 
         if (chanHistory.has_more || index !== chanHistory.messages.length - 1)
           outputStream.write(',')
@@ -107,7 +107,7 @@ export default class SlackHistoryExport {
         message.timestamp = +(message.ts * 1e3).toString().split('.')[0]
         message.isoDate = new Date(message.timestamp)
         /* eslint-enable no-param-reassign */
-        outputStream.write(JSON.stringify(message, null, 2))
+        outputStream.write(JSON.stringify(message, ['isoDate','user','text'], 2))
 
         if (imHistory.has_more || index !== imHistory.messages.length - 1)
           outputStream.write(',')
